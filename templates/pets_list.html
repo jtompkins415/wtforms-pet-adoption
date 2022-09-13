@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} All Pets {% endblock %}
+
+{% block content %}
+<div class="container text-center">
+<div class="row">
+<h1 class="display-2 text-secondary">Pets</h1>
+
+{% for pet in pets %}
+<img src="{{pet.photo_url}}" alt="{{pet.notes}}" width="175" hieght="175">
+
+{% if pet.available %}
+<p><a href="/pets/{{pet.id}}/details"><b class="text-info">{{pet.name}}</b></a> is available!</p>
+{% else %}
+<p><a href="/pets/{{pet.id}}/details"><b class="text-danger">{{pet.name}}</b></a> is not available!</p>
+{% endif %}
+
+{% endfor %}
+
+<a href="/pets/add" class="btn btn-success btn-sm">Add a Pet</a>
+</div>
+</div>
+{% endblock %}
+
